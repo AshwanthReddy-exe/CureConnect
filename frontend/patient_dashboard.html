@@ -67,86 +67,82 @@
             color: var(--secondary);
         }
 
-         /* User Profile Container */
-    .user-profile {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
-        padding: 10px;
-        border-radius: 8px;
-        transition: background 0.3s ease-in-out;
-    }
+        .user-profile {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s ease-in-out;
+        }
 
-    .user-profile:hover {
-        background: #f5f5f5;
-    }
+        .user-profile:hover {
+            background: #f5f5f5;
+        }
 
-    /* Avatar Styling */
-    .avatar {
-        width: 40px;
-        height: 40px;
-        background: #4CAF50;
-        color: white;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        font-size: 18px;
-        text-transform: uppercase;
-    }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: #4CAF50;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
 
-    /* Dropdown Menu */
-    .dropdown {
-        position: absolute;
-        top: 50px;
-        right: 0;
-        background: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        overflow: hidden;
-        width: 150px;
-        display: none;
-        transition: all 0.3s ease-in-out;
-        opacity: 0;
-        visibility: hidden;
-    }
+        .dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 150px;
+            display: none;
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+        }
 
-    /* Show dropdown on hover */
-    .user-profile:hover .dropdown {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-    }
+        .user-profile:hover .dropdown {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
 
-    .dropdown ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+        .dropdown ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-    .dropdown ul li {
-        padding: 12px;
-        text-align: center;
-    }
+        .dropdown ul li {
+            padding: 12px;
+            text-align: center;
+        }
 
-    .dropdown ul li a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        display: block;
-        transition: color 0.2s ease-in-out;
-    }
+        .dropdown ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            display: block;
+            transition: color 0.2s ease-in-out;
+        }
 
-    .dropdown ul li:hover {
-        background: #f0f0f0;
-    }
+        .dropdown ul li:hover {
+            background: #f0f0f0;
+        }
 
-    .dropdown ul li a:hover {
-        color: #4CAF50;
-    }
+        .dropdown ul li a:hover {
+            color: #4CAF50;
+        }
 
         .dashboard-grid {
             display: grid;
@@ -326,7 +322,7 @@
             color: var(--warning);
         }
 
-        .status-success {
+        .status-scheduled {
             background-color: rgba(76, 175, 80, 0.1);
             color: var(--success);
         }
@@ -724,8 +720,8 @@
                 <h1>Patient Dashboard</h1>
             </div>
             <div class="user-profile">
-                <div class="avatar" id="userAvatar">SL</div>
-                <span id="userName">Sarah Lee</span>
+                <div class="avatar" id="userAvatar"></div>
+                <span id="userName"></span>
                 <div class="dropdown">
                     <ul>
                         <li><a href="#">Edit Profile</a></li>
@@ -745,11 +741,11 @@
                         <i class="fas fa-user"></i>
                     </div>
                 </div>
-                <div class="patient-avatar">SL</div>
+                <div class="patient-avatar" id="patientAvatar"></div>
                 <div class="patient-details">
                     <div class="detail-item">
                         <div class="detail-label">Name</div>
-                        <div class="detail-value">Sarah Lee</div>
+                        <div class="detail-value" id="patientNameDetail"></div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-label">Age</div>
@@ -788,9 +784,9 @@
                 <div class="examples">
                     <h3>Example queries:</h3>
                     <div class="example-queries">
-                        <div class="example-query">Schedule an appointment for Sarah with Dr. Wilson on March 15th at 3:00 PM</div>
-                        <div class="example-query">What appointments does John Doe have?</div>
-                        <div class="example-query">Book a visit for Tom with Dr. Lee tomorrow at noon</div>
+                        <div class="example-query">Schedule an appointment with Dr. Wilson on March 15th at 3:00 PM</div>
+                        <div class="example-query">What appointments do I have?</div>
+                        <div class="example-query">Book a visit with Dr. Lee tomorrow at noon</div>
                         <div class="example-query">I'm feeling very weak, have a headache, and my throat is sore</div>
                     </div>
                 </div>
@@ -808,21 +804,8 @@
                         <i class="fas fa-calendar-check"></i>
                     </div>
                 </div>
-                <ul class="appointment-list">
-                    <li class="appointment-item">
-                        <div>
-                            <div class="appointment-time">April 15, 2025 - 10:30 AM</div>
-                            <div class="appointment-doctor">Dr. Michael Johnson</div>
-                        </div>
-                        <span class="appointment-status status-confirmed">Confirmed</span>
-                    </li>
-                    <li class="appointment-item">
-                        <div>
-                            <div class="appointment-time">May 3, 2025 - 2:00 PM</div>
-                            <div class="appointment-doctor">Dr. Emily Chen</div>
-                        </div>
-                        <span class="appointment-status status-pending">Pending</span>
-                    </li>
+                <ul class="appointment-list" id="appointmentList">
+                    <!-- Appointments will be populated dynamically -->
                 </ul>
                 <button id="openModalButton" class="btn btn-primary" style="margin-top: 15px; width: 100%;">
                     <i class="fas fa-plus"></i> Schedule New Appointment
@@ -874,7 +857,6 @@
                     </div>
                 </div>
                 <div class="chart-container">
-                    <!-- This would be replaced with an actual chart in implementation -->
                     <div style="display: flex; justify-content: center; align-items: center; height: 100%; color: var(--gray);">
                         [ Blood Pressure Trend Chart Would Appear Here ]
                     </div>
@@ -903,7 +885,7 @@
                         <i class="fas fa-file-medical"></i>
                         View Medical Records
                     </button>
-                    <button class="action-btn">
+                    <button class="action-btn" onclick="'http:\\127.0.0.1:5006\'">
                         <i class="fas fa-video"></i>
                         Connect to Doctor
                     </button>
@@ -921,23 +903,19 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Schedule New Appointment</h2>
-                <span class="close-modal">&times;</span>
+                <span class="close-modal">×</span>
             </div>
             <div class="modal-body">
                 <form id="appointmentForm">
                     <div class="form-group">
                         <label for="patientName">Patient Name</label>
-                        <input type="text" id="patientName" name="patientName" value="Sarah Lee" required>
+                        <input type="text" id="patientName" name="patientName" readonly>
                     </div>
                     <div class="form-group">
                         <label for="doctorName">Doctor Name</label>
                         <select id="doctorName" name="doctorName" required>
                             <option value="">Select a doctor</option>
-                            <option value="Dr. John Doe">Dr. John Doe - Cardiology</option>
-                            <option value="Dr. Michael Johnson">Dr. Michael Johnson - Primary Care</option>
-                            <option value="Dr. Emily Chen">Dr. Emily Chen - Endocrinology</option>
-                            <option value="Dr. Wilson">Dr. Wilson - Neurology</option>
-                            <option value="Dr. Lee">Dr. Lee - Orthopedics</option>
+                            <!-- Populated dynamically -->
                         </select>
                     </div>
                     <div class="form-group">
@@ -958,438 +936,192 @@
         </div>
     </div>
 
- <script>
-        // Wait for the DOM to be fully loaded
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check system status on page load
-            checkSystemStatus();
-            
-            // Set up event listeners
-            document.getElementById('sendButton').addEventListener('click', sendQuery);
-            
-            document.getElementById('query').addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    sendQuery();
-                }
-            });
-            
-            // Set up example query functionality
-            const exampleQueries = document.querySelectorAll('.example-query');
-            exampleQueries.forEach(query => {
-                query.addEventListener('click', function() {
-                    document.getElementById('query').value = this.textContent;
-                });
-            });
-            
-            // Set up action button functionality
-            document.querySelectorAll('.action-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    alert(`Action triggered: ${this.textContent.trim()}`);
-                });
-            });
-        });
-        
-        // Function to check the system status
-        function checkSystemStatus() {
-            const statusElement = document.getElementById('system-status');
-            
-            fetch('http://localhost:5004/health')
-                .then(response => {
-                    if (response.ok) {
-                        statusElement.className = 'status online';
-                        statusElement.innerText = '✓ System online and ready';
-                    } else {
-                        setOfflineStatus();
-                    }
-                })
-                .catch(() => {
-                    setOfflineStatus();
-                    
-                    // For demo purposes only - simulate being online after 2 seconds
-                    // Remove this in production with real backend connection
-                    setTimeout(() => {
-                        statusElement.className = 'status online';
-                        statusElement.innerText = '✓ System online and ready (DEMO MODE)';
-                    }, 2000);
-                });
-        }
-        
-        // Function to set the offline status
-        function setOfflineStatus() {
-            const statusElement = document.getElementById('system-status');
-            statusElement.className = 'status offline';
-            statusElement.innerHTML = '✗ System offline. Make sure the backend is running.<br>Check the console for error details.';
-        }
-        
-        // Function to send a query to the backend
-        function sendQuery() {
-            const queryInput = document.getElementById('query');
-            const responseElement = document.getElementById('response');
-            const query = queryInput.value.trim();
-            
-            if (!query) {
-                responseElement.innerText = 'Please enter a query first.';
-                return;
-            }
-            
-            responseElement.innerHTML = '<div class="loading">Processing your request...</div>';
-            
-            // Try to connect to the backend
-            fetch('http://localhost:5004/process_query', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ query })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    responseElement.innerText = 'Error: ' + data.error;
-                } else if (data.intent === 'get_doctor_details' && data.entities.disease_name) {
-                    fetchDoctors(data.entities.disease_name);
-                } else {
-                    responseElement.innerText = data.response || 'No response received.';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                
-                // For demo purposes only - provide simulated responses
-                // Remove this in production with real backend connection
-                simulateResponse(query);
-                
-                // Check system status in case the backend is down
-                checkSystemStatus();
-            });
-        }
+            // Initialize patient information
+            const patientName = localStorage.getItem('userName') || 'Guest User';
+            document.getElementById('userName').innerText = patientName;
+            document.getElementById('userAvatar').innerText = patientName
+                .split(' ')
+                .map(word => word[0].toUpperCase())
+                .join('');
+            document.getElementById('patientNameDetail').innerText = patientName;
+            document.getElementById('patientAvatar').innerText = patientName
+                .split(' ')
+                .map(word => word[0].toUpperCase())
+                .join('');
+            document.getElementById('patientName').value = patientName;
 
+            // Load doctors for the appointment form
+            loadDoctors();
 
-        document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("appointmentModal");
-    const openModalButton = document.getElementById("openModalButton");
-    const closeModalButton = document.querySelector(".close-modal");
-    const cancelAppointmentButton = document.getElementById("cancelAppointment");
-    const appointmentForm = document.getElementById("appointmentForm");
-    const appointmentStatus = document.getElementById("appointmentStatus");
-    const apiUrl = 'http://127.0.0.1:5000'; // Your Flask API URL
+            // Load appointments
+            loadAppointments();
 
-    // Open the modal
-    openModalButton.addEventListener("click", function () {
-        modal.style.display = "block";
-    });
+            // Modal controls
+            const modal = document.getElementById('appointmentModal');
+            const openModalButton = document.getElementById('openModalButton');
+            const closeModalButton = document.querySelector('.close-modal');
+            const cancelAppointmentButton = document.getElementById('cancelAppointment');
 
-    // Close the modal when clicking on close button
-    closeModalButton.addEventListener("click", function () {
-        modal.style.display = "none";
-    });
-
-    // Close modal when clicking outside the modal content
-    window.addEventListener("click", function (event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-
-    // Cancel button also closes the modal
-    cancelAppointmentButton.addEventListener("click", function () {
-        modal.style.display = "none";
-    });
-
-    // Form Submission to /appointments/schedule
-    appointmentForm.addEventListener("submit", async function (event) {
-        event.preventDefault(); // Prevent page reload
-
-        // Get form values
-        const patientName = document.getElementById("patientName").value.trim();
-        const doctorName = document.getElementById("doctorName").value;
-        const appointmentDate = document.getElementById("appointmentDate").value;
-        const appointmentTime = document.getElementById("appointmentTime").value;
-
-        // Validate inputs
-        if (!patientName || !doctorName || !appointmentDate || !appointmentTime) {
-            appointmentStatus.innerHTML = "<p style='color: red;'>All fields are required!</p>";
-            return;
-        }
-
-        // Construct payload in the format expected by the Flask API
-        const payload = {
-            patient_name: patientName,
-            doctor_name: doctorName,
-            date: appointmentDate, // Use the datepicker format (YYYY-MM-DD)
-            time: appointmentTime   // Use the timepicker format (HH:MM)
-        };
-
-        try {
-            // Send POST request to the Flask API endpoint
-            const response = await fetch(`${apiUrl}/appointments/schedule`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
+            openModalButton.addEventListener('click', function() {
+                modal.style.display = 'block';
             });
 
-            const result = await response.json();
-
-            if (response.ok) {
-                appointmentStatus.innerHTML = `<p style='color: green;'>✅ Appointment scheduled successfully for ${result.details.patient_name} with ${result.details.doctor_name} on ${result.details.date} at ${result.details.time}.</p>`;
-
-                // Close the modal after 2 seconds
-                setTimeout(() => {
-                    modal.style.display = "none";
-                }, 2000);
-
-                // Reset the form after submission
-                appointmentForm.reset();
-
-                // Optionally, reload the appointments list to show the new one
-                if (document.querySelector('.nav-button.active').dataset.tab === 'appointments') {
-                    loadAppointments();
-                } else if (document.getElementById('all-appointments-list')) {
-                    loadAppointments(); // If on another tab but appointments list exists
-                }
-            } else {
-                appointmentStatus.innerHTML = `<p style='color: red;'>❌ Failed to schedule appointment: ${result.message || "Unknown error"}</p>`;
-            }
-        } catch (error) {
-            appointmentStatus.innerHTML = `<p style='color: red;'>❌ Server error: ${error.message}</p>`;
-        }
-    });
-});
-        
-        // Function to fetch doctors for a specific disease
-        function fetchDoctors(disease) {
-            const responseElement = document.getElementById('response');
-            
-            fetch(`http://localhost:5004/get_doctors?disease=${encodeURIComponent(disease)}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error || !data.doctors.length) {
-                        responseElement.innerText = `No doctors found for ${disease}.`;
-                    } else {
-                        let doctorList = data.doctors.map(doc => `👨‍⚕️ Dr. ${doc.name}, ${doc.specialization}, Contact: ${doc.contact}`).join("\n");
-                        responseElement.innerText = `Doctors for ${disease}:\n\n${doctorList}`;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    responseElement.innerText = 'Could not retrieve doctor details. Try again later.';
-                    
-                    // For demo purposes only - provide simulated responses
-                    // Remove this in production with real backend connection
-                    const doctors = [
-                        { name: "John Smith", specialization: "Infectious Disease", contact: "555-1234" },
-                        { name: "Jane Doe", specialization: "Internal Medicine", contact: "555-5678" }
-                    ];
-                    let doctorList = doctors.map(doc => `👨‍⚕️ Dr. ${doc.name}, ${doc.specialization}, Contact: ${doc.contact}`).join("\n");
-                    responseElement.innerText = `Doctors for ${disease} (DEMO MODE):\n\n${doctorList}`;
-                });
-        }
-        
-        // Function to simulate responses for demo purposes
-        function simulateResponse(query) {
-            const responseElement = document.getElementById('response');
-            
-            setTimeout(() => {
-                let response;
-                const queryLower = query.toLowerCase();
-                
-                if (queryLower.includes('appointment') || queryLower.includes('schedule') || queryLower.includes('book')) {
-                    response = "I've scheduled your appointment. You'll receive a confirmation shortly.\n\n(DEMO MODE: This is a simulated response)";
-                } else if (queryLower.includes('fever') || queryLower.includes('headache') || queryLower.includes('sore throat') || queryLower.includes('weak')) {
-                    response = "Based on your symptoms, I recommend rest and plenty of fluids. If symptoms persist for more than 48 hours, please schedule an appointment with your doctor.\n\n(DEMO MODE: This is a simulated response)";
-                } else if (queryLower.includes('medication') || queryLower.includes('medicine') || queryLower.includes('prescription')) {
-                    response = "Your current medications are:\n- Atorvastatin (20mg) - Once daily\n- Metformin (500mg) - Twice daily\n- Lisinopril (10mg) - Once daily\n\nWould you like to request a refill?\n\n(DEMO MODE: This is a simulated response)";
-                } else {
-                    response = "I understand your query. How else can I assist you today?\n\n(DEMO MODE: This is a simulated response)";
-                }
-                
-                responseElement.innerText = response;
-            }, 1000);
-        }
-
-    // Additional Modal Script
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get the modal elements
-        const modal = document.getElementById('appointmentModal');
-        const btnSchedule = document.querySelector('.btn-primary[style*="margin-top"]');
-        const closeBtn = document.querySelector('.close-modal');
-        const cancelBtn = document.getElementById('cancelAppointment');
-        const appointmentForm = document.getElementById('appointmentForm');
-        const appointmentStatus = document.getElementById('appointmentStatus');
-        
-        // Set the default appointment date to today
-        const today = new Date();
-        const formattedDate = today.toISOString().substr(0, 10);
-        document.getElementById('appointmentDate').value = formattedDate;
-        
-        // Show the modal when the Schedule button is clicked
-        btnSchedule.addEventListener('click', function() {
-            modal.style.display = 'block';
-            appointmentStatus.className = 'appointment-status';
-            appointmentStatus.textContent = '';
-        });
-        
-        // Close the modal when the close button is clicked
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = 'none';
-        });
-        
-        // Close the modal when the cancel button is clicked
-        cancelBtn.addEventListener('click', function() {
-            modal.style.display = 'none';
-        });
-        
-        // Close the modal when clicking outside the modal content
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
+            closeModalButton.addEventListener('click', function() {
                 modal.style.display = 'none';
-            }
-        });
-        
-        // Handle form submission
-        appointmentForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Get form values
-            const patientName = document.getElementById('patientName').value;
-            const doctorName = document.getElementById('doctorName').value;
-            const date = document.getElementById('appointmentDate').value;
-            const time = document.getElementById('appointmentTime').value;
-            
-            // Format date and time for display
-            const displayDate = new Date(date).toLocaleDateString('en-US', { 
-                month: 'long', 
-                day: 'numeric', 
-                year: 'numeric' 
             });
-            
-            // Format time for display (convert 24h to 12h format)
-            const timeParts = time.split(':');
-            let hours = parseInt(timeParts[0]);
-            const minutes = timeParts[1];
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // Convert 0 to 12
-            const displayTime = `${hours}:${minutes} ${ampm}`;
-            
-            // Create payload
-            const payload = {
+
+            cancelAppointmentButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Appointment form submission
+            document.getElementById('appointmentForm').addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const patientName = document.getElementById('patientName').value;
+                const doctorName = document.getElementById('doctorName').value;
+                const date = document.getElementById('appointmentDate').value; // YYYY-MM-DD
+                const time = document.getElementById('appointmentTime').value; // HH:MM
+
+                const payload = {
                     patient_name: patientName,
                     doctor_name: doctorName,
-                    date: displayDate,
-                    time: displayTime
-            };
-            
-            // Show loading status
-            appointmentStatus.className = 'appointment-status status-loading';
-            appointmentStatus.textContent = 'Scheduling appointment...';
-            
-            // Send appointment data to Flask backend
-            fetch('http://localhost:5005/appointments/schedule', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Show success message
-                    appointmentStatus.className = 'appointment-status status-success';
-                    appointmentStatus.textContent = 'Appointment scheduled successfully!';
-                    
-                    // Add the new appointment to the list
-                    addAppointmentToList(patientName, doctorName, displayDate, displayTime);
-                    
-                    // Close modal after 2 seconds
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 2000);
-                } else {
-                    // Show error message
+                    date: date,
+                    time: time
+                };
+
+                const appointmentStatus = document.getElementById('appointmentStatus');
+                appointmentStatus.className = 'appointment-status status-loading';
+                appointmentStatus.textContent = 'Scheduling appointment...';
+
+                try {
+                    const response = await fetch('http://127.0.0.1:5005/appointments/schedule', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        appointmentStatus.className = 'appointment-status status-scheduled';
+                        appointmentStatus.textContent = `Appointment scheduled successfully for ${data.details.patient_name} with ${data.details.doctor_name} on ${data.details.date} at ${data.details.time}.`;
+                        loadAppointments(); // Refresh appointment list
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            appointmentStatus.textContent = '';
+                        }, 2000);
+                    } else {
+                        appointmentStatus.className = 'appointment-status status-error';
+                        appointmentStatus.textContent = data.message || 'Failed to schedule appointment.';
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
                     appointmentStatus.className = 'appointment-status status-error';
-                    appointmentStatus.textContent = data.message || 'Failed to schedule appointment. Please try again.';
+                    appointmentStatus.textContent = 'Error scheduling appointment. Please try again.';
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                
-                // For demo purposes - simulate success
-                appointmentStatus.className = 'appointment-status status-success';
-                appointmentStatus.textContent = 'Appointment scheduled successfully! (DEMO MODE)';
-                
-                // Add the new appointment to the list
-                addAppointmentToList(patientName, doctorName, displayDate, displayTime);
-                
-                // Close modal after 2 seconds
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 2000);
+            });
+
+            // Logout
+            document.getElementById('logoutBtn').addEventListener('click', function(event) {
+                event.preventDefault();
+                if (confirm('Are you sure you want to logout?')) {
+                    localStorage.removeItem('userName');
+                    localStorage.removeItem('userEmail');
+                    localStorage.removeItem('userLocation');
+                    window.location.href = 'ehr.html';
+                }
+            });
+
+            // Agentic chat (unchanged for simplicity)
+            document.getElementById('sendButton').addEventListener('click', function() {
+                alert('Chat functionality not implemented in this version.');
             });
         });
-        
-        // Function to add a new appointment to the list
-        function addAppointmentToList(patientName, doctorName, date, time) {
-            const appointmentList = document.querySelector('.appointment-list');
-            
-            // Create new appointment item
-            const appointmentItem = document.createElement('li');
-            appointmentItem.className = 'appointment-item';
-            
-            // Create appointment details
-            const detailsDiv = document.createElement('div');
-            
-            const timeDiv = document.createElement('div');
-            timeDiv.className = 'appointment-time';
-            timeDiv.textContent = `${date} - ${time}`;
-            
-            const doctorDiv = document.createElement('div');
-            doctorDiv.className = 'appointment-doctor';
-            doctorDiv.textContent = doctorName;
-            
-            detailsDiv.appendChild(timeDiv);
-            detailsDiv.appendChild(doctorDiv);
-            
-            // Create status span
-            const statusSpan = document.createElement('span');
-            statusSpan.className = 'appointment-status status-pending';
-            statusSpan.textContent = 'Pending';
-            
-            // Append everything to the appointment item
-            appointmentItem.appendChild(detailsDiv);
-            appointmentItem.appendChild(statusSpan);
-            
-            // Add to the list
-            appointmentList.appendChild(appointmentItem);
-        }
-    });
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const logoutBtn = document.getElementById("logoutBtn");
-        const userAvatar = document.getElementById("userAvatar");
-        const userName = document.getElementById("userName");
+        async function loadDoctors() {
+            const doctorSelect = document.getElementById('doctorName');
+            try {
+                const response = await fetch('http://127.0.0.1:5005/doctors', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-        // Logout Confirmation
-        logoutBtn.addEventListener("click", function (event) {
-            event.preventDefault();
-            const confirmLogout = confirm("Are you sure you want to logout?");
-            if (confirmLogout) {
-                window.location.href = "ehr.html";
+                const data = await response.json();
+                if (response.ok && data.status === 'success') {
+                    data.doctors.forEach(doctor => {
+                        const option = document.createElement('option');
+                        option.value = doctor.name;
+                        option.textContent = `${doctor.name} - ${doctor.specialty}`;
+                        doctorSelect.appendChild(option);
+                    });
+                } else {
+                    console.error('Error fetching doctors:', data.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
             }
-        });
+        }
 
-        // Dynamic Name & Avatar
-        const storedName = localStorage.getItem("selectedPatient") || "Sarah Lee";
-        userName.innerText = storedName;
-        userAvatar.innerText = storedName
-            .split(" ")
-            .map(word => word[0].toUpperCase())
-            .join("");
-    });
-    
+        async function loadAppointments() {
+            const appointmentList = document.getElementById('appointmentList');
+            const patientName = localStorage.getItem('userName') || 'Guest User';
+            appointmentList.innerHTML = '<li class="appointment-item">Loading appointments...</li>';
+
+            try {
+                const response = await fetch(`http://127.0.0.1:5005/appointments?patient_name=${encodeURIComponent(patientName)}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+                appointmentList.innerHTML = '';
+
+                if (response.ok && data.status === 'success' && data.appointments.length > 0) {
+                    data.appointments.forEach(appointment => {
+                        const li = document.createElement('li');
+                        li.className = 'appointment-item';
+
+                        const detailsDiv = document.createElement('div');
+                        const timeDiv = document.createElement('div');
+                        timeDiv.className = 'appointment-time';
+                        timeDiv.textContent = `${appointment.date} - ${appointment.time}`;
+                        const doctorDiv = document.createElement('div');
+                        doctorDiv.className = 'appointment-doctor';
+                        doctorDiv.textContent = `${appointment.doctor_name} (${appointment.specialty})`;
+                        detailsDiv.appendChild(timeDiv);
+                        detailsDiv.appendChild(doctorDiv);
+
+                        const statusSpan = document.createElement('span');
+                        statusSpan.className = `appointment-status status-${appointment.status.toLowerCase()}`;
+                        statusSpan.textContent = appointment.status.charAt(0).toUpperCase() + appointment.status.slice(1);
+
+                        li.appendChild(detailsDiv);
+                        li.appendChild(statusSpan);
+                        appointmentList.appendChild(li);
+                    });
+                } else {
+                    appointmentList.innerHTML = '<li class="appointment-item">No upcoming appointments found.</li>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                appointmentList.innerHTML = '<li class="appointment-item">Error loading appointments.</li>';
+            }
+        }
     </script>
 </body>
 </html>
