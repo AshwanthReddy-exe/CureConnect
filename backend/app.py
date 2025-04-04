@@ -13,4 +13,4 @@ app.register_blueprint(appointments_bp, url_prefix='/appointments')
 app.register_blueprint(chat_bp, url_prefix='/chat')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

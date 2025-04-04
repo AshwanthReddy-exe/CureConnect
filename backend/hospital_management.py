@@ -166,4 +166,4 @@ if __name__ == '__main__':
     print("Starting Parent Agent on http://localhost:5000...")
     init_db()  # Initialize the database
     parent = ParentAgent()
-    parent.app.run(host='0.0.0.0', port=5000, debug=True)
+    parent.app.run(host='0.0.0.0', port=5004, debug=True)

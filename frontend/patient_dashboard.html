@@ -993,7 +993,7 @@
         function checkSystemStatus() {
             const statusElement = document.getElementById('system-status');
             
-            fetch('http://localhost:5000/health')
+            fetch('http://localhost:5004/health')
                 .then(response => {
                     if (response.ok) {
                         statusElement.className = 'status online';
@@ -1035,7 +1035,7 @@
             responseElement.innerHTML = '<div class="loading">Processing your request...</div>';
             
             // Try to connect to the backend
-            fetch('http://localhost:5000/process_query', {
+            fetch('http://localhost:5004/process_query', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -1162,7 +1162,7 @@
         function fetchDoctors(disease) {
             const responseElement = document.getElementById('response');
             
-            fetch(`http://localhost:5000/get_doctors?disease=${encodeURIComponent(disease)}`)
+            fetch(`http://localhost:5004/get_doctors?disease=${encodeURIComponent(disease)}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.error || !data.doctors.length) {
@@ -1287,7 +1287,7 @@
             appointmentStatus.textContent = 'Scheduling appointment...';
             
             // Send appointment data to Flask backend
-            fetch('http://localhost:5000/appointments/schedule', {
+            fetch('http://localhost:5005/appointments/schedule', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

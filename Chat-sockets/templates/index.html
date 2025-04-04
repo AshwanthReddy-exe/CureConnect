@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor-Patient Chat</title>
+    <style>
+        /* General styles for the whole page */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        /* Role selection section */
+        #roleSelection {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 300px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        #roleSelection h3 {
+            margin-bottom: 20px;
+            color: #34495e;
+            font-size: 1.25rem;
+        }
+
+        #roleSelection button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 10px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        #roleSelection button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Chat window styles */
+        #chatWindow {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            max-width: 100%;
+            display: none;
+            text-align: left;
+        }
+
+        #chatWindow h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+
+        #chatWindow textarea {
+            width: 100%;
+            height: 250px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            color: #333;
+            resize: none;
+            background-color: #ecf0f1;
+        }
+
+        #chatWindow input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            color: #333;
+            background-color: #ecf0f1;
+        }
+
+        #chatWindow button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        #chatWindow button:hover {
+            background-color: #2ecc71;
+        }
+
+        /* Room details */
+        #chatWindow h3 span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Doctor-Patient Chat</h1>
+
+    <!-- Role selection form -->
+    <div id="roleSelection">
+        <h3>Select Your Role:</h3>
+        <button onclick="setRole('Doctor')">Doctor</button>
+        <button onclick="setRole('Patient')">Patient</button>
+    </div>
+
+    <div id="chatWindow">
+        <h3>Role: <span id="role"></span></h3>
+        <h3>Chat Room: <span id="roomId">Room 123</span></h3>
+        <textarea id="chat" rows="10" cols="50" readonly></textarea><br>
+        <input type="text" id="messageInput" placeholder="Type a message..."/>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        var username = "user";  // Placeholder for username, can be dynamically set
+        var role = "";  // Role (Doctor or Patient)
+        var roomId = "Room123";  // Unique room identifier for chat
+
+        // Function to select the role
+        function setRole(selectedRole) {
+            role = selectedRole;
+            username = selectedRole.toLowerCase() + "1";  // Dynamic username based on role
+            document.getElementById("role").textContent = role;
+
+            // Hide role selection and show chat window
+            document.getElementById("roleSelection").style.display = "none";
+            document.getElementById("chatWindow").style.display = "block";
+
+            // Join the chat room as selected user (Doctor/Patient)
+            socket.emit('join', {'username': username, 'role': role, 'room_id': roomId});
+        }
+
+        // Listen for incoming messages
+        socket.on('message', function(msg) {
+            document.getElementById("chat").value += msg.data + '\n';
+        });
+
+        // Send a message to the server
+        function sendMessage() {
+            var message = document.getElementById("messageInput").value;
+            if (message.trim()) {
+                socket.send({
+                    'message': message,
+                    'room_id': roomId,
+                    'username': username
+                });
+                document.getElementById("messageInput").value = '';  // Clear input after sending
+            }
+        }
+    </script>
+</body>
+</html>
